@@ -1,0 +1,21 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p> Хотите удалить рассылку ? </p>
+                        <button Type="submit" class="btn btn-success"> Подтвердить </button>
+                        <a Type="submit" href="{% url 'client:newsletter' %}" class="btn btn-success">Обратно</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

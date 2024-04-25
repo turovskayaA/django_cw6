@@ -1,0 +1,21 @@
+{% extends 'client/base.html' %}
+{% block title %} Рассылки {% endblock %}
+{% block content %}
+<a class="btn btn-outline-success" href="{% url 'client:create_newsletter' %}"> Добавить рассылку </a>
+
+{% for object in object_list %}
+<div class="col">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="card-text">Время старта : {{ object.start_time }} </p>
+            <p class="card-text">Время окончания: {{ object.end_time }} </p>
+            <p class="card-text">Период: {{ object.period }} </p>
+            <p class="card-text">Статус: {{ object.status }} </p>
+            <p class="card-text">Сообщение: {{ object.message }} </p>
+            <p class="card-text">Создатель: {{ object.owner|default:'Не заполнено' }} </p>
+            <a href="{% url 'client:view_newsletter' object.pk %}">Подробнее</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'client/base.html' %}
+
+{% block title %} О клиенте {% endblock %}
+
+{% block content %}
+<div class="col-6">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="card-text">ФИО: {{ object.full_name }} </p>
+            <p class="card-text">Почта: {{ object.email }} </p>
+            <p class="card-text">Комментарий: {{ object.comment }}</p>
+            <a href="{% url 'client:edit' object.pk %}" class="w-100 btn btn-lg btn-outline-primary">Редактировать</a>
+            <a href="{% url 'client:home' %}" class="w-100 btn btn-lg btn-outline-primary">Обратно</a>
+            <a href="{% url 'client:delete' object.pk %}" class="w-100 btn btn-lg btn-outline-success"> Удалить</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% block menu %}
+<div class="row">
+    <div class="col-sm-4 offset-md-1 py-4">
+        <h4>Меню</h4>
+        <nav class="ms-5">
+            <p></p><a class="p-2 btn btn-outline-primary" href="{% url 'client:home_view' %}">Главная страница</a></p>
+            <p></p><a class="p-2 btn btn-outline-primary" href="/">Клиенты</a></p>
+            <p><a class="p-2 btn btn-outline-primary" href="/message/">Сообщения</a></p>
+            <p><a class="p-2 btn btn-outline-primary" href="/newsletter/">Рассылки</a></p>
+            <p><a class="p-2 btn btn-outline-primary" href="{% url 'blog:list' %}">Новости</a></p>
+            {% if user.is_authenticated %}
+                <p><a class="p-2 btn btn-outline-primary" href="{% url 'users:profile' %}">Профиль</a></p>
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <p><button type="submit" class="p-2 btn btn-outline-primary">Выйти</button></p>
+                </form>
+            {% else %}
+                <p><a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Войти</a></p>
+                <p><a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a></p>
+            {% endif %}
+        </nav>
+    </div>
+    {% endblock %}

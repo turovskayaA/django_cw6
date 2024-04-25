@@ -1,0 +1,18 @@
+{% extends 'client/base.html' %}
+{% block title %} Сообщения {% endblock %}
+{% block content %}
+<a class="btn btn-outline-success" href="{% url 'client:create_message' %}"> Добавить сообщение </a>
+
+{% for object in object_list %}
+<div class="col">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="card-text">Тема письма: {{ object.topic }} </p>
+            <p class="card-text">Тело письма: {{ object.message }} </p>
+            <p class="card-text">Создатель: {{ object.owner|default:'Не заполнено' }} </p>
+            <a href="{% url 'client:view_message' object.pk %}">Подробнее</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

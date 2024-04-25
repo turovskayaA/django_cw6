@@ -1,0 +1,19 @@
+{% extends 'client/base.html' %}
+{% block title %} Клиенты {% endblock %}
+{% block content %}
+<a class="btn btn-outline-success" href="{% url 'client:create' %}"> Добавить клиента </a>
+
+{% for object in object_list %}
+<div class="col">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="card-text">ФИО: {{ object.full_name }} </p>
+            <p class="card-text">Почта: {{ object.email }} </p>
+            <p class="card-text">Комментарий: {{ object.comment }}</p>
+            <p class="card-text">Создатель: {{ object.owner|default:'Не заполнено' }} </p>
+            <a href="{% url 'client:view' object.pk %}">Подробнее</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

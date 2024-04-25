@@ -1,0 +1,17 @@
+{% extends 'client/base.html' %}
+
+{% block title %} Сообщение {% endblock %}
+
+{% block content %}
+<div class="col-6">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="card-text">Тема письма: {{ object.topic }} </p>
+            <p class="card-text">Тело письма: {{ object.message }} </p>
+            <a href="{% url 'client:edit_message' object.pk %}" class="w-100 btn btn-lg btn-outline-primary">Редактировать</a>
+            <a href="{% url 'client:message' %}" class="w-100 btn btn-lg btn-outline-primary">Обратно</a>
+            <a href="{% url 'client:delete_message' object.pk %}" class="w-100 btn btn-lg btn-outline-success"> Удалить</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

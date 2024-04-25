@@ -1,0 +1,20 @@
+{% extends 'client/base.html' %}
+
+{% block title %} Рассылка {% endblock %}
+
+{% block content %}
+<div class="col-6">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="card-text">Время старта : {{ object.start_time }} </p>
+            <p class="card-text">Время окончания: {{ object.end_time }} </p>
+            <p class="card-text">Период: {{ object.period }} </p>
+            <p class="card-text">Статус: {{ object.status }} </p>
+            <p class="card-text">Сообщение: {{ object.message }} </p>
+            <a href="{% url 'client:edit_newsletter' object.pk %}" class="w-100 btn btn-lg btn-outline-primary">Редактировать</a>
+            <a href="{% url 'client:newsletter' %}" class="w-100 btn btn-lg btn-outline-primary">Обратно</a>
+            <a href="{% url 'client:delete_newsletter' object.pk %}" class="w-100 btn btn-lg btn-outline-success"> Удалить</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
